@@ -14,14 +14,14 @@ export default {
   },
  methods:{
     hander() {
-    axios.get("http://localhost:3000/users")
+    axios.get("http://localhost:3000/users/projectList")
       .then((res) => {
         this.msg = res.data.msg;
         console.log("8888888")
       })
       .catch((err) => {
         console.log(err);
-      });  
+      });
   }
  }
 }

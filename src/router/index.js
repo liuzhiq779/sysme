@@ -1,23 +1,72 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import Layout from '../views/Layout/index'
+import Login from '../views/Login/Login.vue'
+import Home from '../views/Home/index.vue'
+
+
+//异步
+const  Goods = () =>import('../views/Goods/index.vue')
+const  Params = () =>import('../views/Params/index.vue')
+const  Oder = () =>import('../views/Oder/index.vue')
+const OderList = ()=>import('../views/Oder/OderList/index.vue')
+const OderBack = ()=>import('../views/Oder/OderBack/index.vue')
+const  Advert = () =>import('../views/Advert/index.vue')
 
 Vue.use(VueRouter)
 
 const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: HomeView
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+ {
+   path:'',
+   component:Layout,
+   children:[
+      {
+        path:'/',
+        name:'Home',
+        component:Home
+      },
+      {
+        path:'/Goods',
+        name:'goods',
+        component:Goods
+      },
+      {
+        path:'/Params',
+        name:'Params',
+        component:Params
+      },
+      {
+        path:'/Advert',
+        name:'Advert',
+        component:Advert
+      },
+      {
+        path:'/Oder',
+        name:'Oder',
+        redirect:'/Oder/OderList',
+        component:Oder,
+        children:[
+          {
+            path:'OderList',
+            name:'OderList',
+            component:OderList
+          },
+          {
+            path:'OderBack',
+            name:'OderBack',
+            component:OderBack
+          }
+        ]
+      },
+      
+   ]
+ },
+ {
+   path:'/login',
+   name:'Login',
+   component:Login
+ }
+  
 ]
 
 const router = new VueRouter({

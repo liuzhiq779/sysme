@@ -15,5 +15,5 @@ npm run serve
 npm run build
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### 项目是vue+node(express) 前后端分离的前端架构搭建非常容易，后端接口也很简单
+
